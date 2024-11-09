@@ -9,21 +9,26 @@ app.use(express.static('public'));
 
 // Home route to test the database connection
 app.get('/', (req, res) => {
+  res.render('index');
+});
+
+// DB test!
+app.get('/test-db', (req, res) => {
   const db = getConnection();
   db.connect((err) => {
     if (err) {
       console.error('Error connecting to the database:', err.stack);
-      res.render('index', { status: 'Error connecting to the database: ' + err.stack });
+      res.render('database', { status: 'Error connecting to the database: ' + err.stack });
       return;
     }
     db.query('SELECT 1 + 1 AS solution', (err, results) => {
       db.end(); // Close the connection after query
       if (err) {
         console.error('Error querying the database:', err.stack);
-        res.render('index', { status: 'Error querying the database: ' + err.stack });
+        res.render('database', { status: 'Error querying the database: ' + err.stack });
         return;
       }
-      res.render('index', { status: 'Database connection test successful! Result: ' + results[0].solution });
+      res.render('database', { status: 'Database connection test successful! Result: ' + results[0].solution });
     });
   });
 });

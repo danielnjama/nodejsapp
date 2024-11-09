@@ -3,32 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Database Connection Status</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Home Page</title>
+  
+  <!-- Bootstrap CSS from Official CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
+
   <div class="container mt-5">
-    <div class="card">
-      <div class="card-header">
-        Database Connection Status
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"><%= status.includes('Error') ? 'Error' : 'Success' %></h5>
-        <p class="card-text"><%= status %></p>
-        <% if (status.includes('Error')) { %>
-          <div class="alert alert-danger" role="alert">
-            There was an issue connecting to the database.
+    <header class="text-center mb-4">
+      <h1>Welcome to My Home Page</h1>
+      <p class="lead">This is a simple Node.js application using EJS for templating and Bootstrap for styling.</p>
+    </header>
+
+    <main>
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h2>About Us</h2>
+            </div>
+            <div class="card-body">
+              <p>We provide a variety of services and solutions for our users. Explore more to learn about our offerings.</p>
+            </div>
           </div>
-        <% } else { %>
-          <div class="alert alert-success" role="alert">
-            The database connection is working properly.
+        </div>
+
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h2>Contact Information</h2>
+            </div>
+            <div class="card-body">
+              <p>Email: info@example.com</p>
+              <p>Phone: (123) 456-7890</p>
+            </div>
           </div>
-        <% } %>
+        </div>
       </div>
-    </div>
+    </main>
+
+    <footer class="text-center mt-5">
+      <p>&copy; <%= new Date().getFullYear() %> My Company. All rights reserved.</p>
+    </footer>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap JavaScript from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
