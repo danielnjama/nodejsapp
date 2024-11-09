@@ -28,10 +28,17 @@ app.get('/test-db', (req, res) => {
         res.render('database', { status: 'Error querying the database: ' + err.stack });
         return;
       }
-      res.render('database', { status: 'Database connection test successful! Result: ' + results[0].solution });
+
+      // Use 'results.rows' to access the rows returned by PostgreSQL
+      if (results.rows && results.rows.length > 0) {
+        res.render('database', { status: 'Database connection test successful! Result: ' + results.rows[0].solution });
+      } else {
+        res.render('database', { status: 'No rows returned from the query.' });
+      }
     });
   });
 });
+
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
